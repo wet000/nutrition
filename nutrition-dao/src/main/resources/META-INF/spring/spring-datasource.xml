@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans	xmlns="http://www.springframework.org/schema/beans"
+		xmlns:p="http://www.springframework.org/schema/p"
+    	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    						http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="mysqlDataSource"
+		  class="org.apache.commons.dbcp2.BasicDataSource"
+		  p:driverClassName="com.mysql.jdbc.Driver"
+		  p:url="jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/nutrition"
+		  p:username="${OPENSHIFT_MYSQL_DB_USERNAME}"
+		  p:password="${OPENSHIFT_MYSQL_DB_PASSWORD}"/>
+
+</beans>
