@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>nutrition-bom</artifactId>
+  <packaging>pom</packaging>
+
+  <name>API Nutrition BOM (Bill of Materials)</name>
+  <description>BOM for easy dependency management of Nutrition API dependencies</description>
+
+  <parent>
+    <groupId>com.wet.api</groupId>
+    <artifactId>common-bom</artifactId>
+    <version>01.00.00.00-SNAPSHOT</version>
+		<relativePath>../common/common-bom/</relativePath>
+  </parent>
+
+  <properties>
+    <common.bom.version>01.00.00.00-SNAPSHOT</common.bom.version>
+    <nutrition.version>01.00.00.00-SNAPSHOT</nutrition.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- West Enterprise Nutrition Dependencies -->
+      <dependency>
+        <groupId>com.wet.api</groupId>
+        <artifactId>nutrition-dao</artifactId>
+        <version>${nutrition.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.wet.api</groupId>
+        <artifactId>nutrition-model</artifactId>
+        <version>${nutrition.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <distributionManagement>
+    <repository>
+      <id>wet-framework-releases</id>
+      <name>West Enterprise Technologies Framework Releases</name>
+      <url>http://nexus-westenterprise.rhcloud.com/nexus/content/repositories/wet-framework-releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>wet-framework-snapshots</id>
+      <name>West Enterprise Technologies Framework Snapshots</name>
+      <url>http://nexus-westenterprise.rhcloud.com/nexus/content/repositories/wet-framework-snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+</project>

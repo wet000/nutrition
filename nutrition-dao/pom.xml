@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>nutrition-dao</artifactId>
+  <packaging>jar</packaging>
+
+  <name>Nutrition API DAOs</name>
+
+  <parent>
+    <groupId>com.wet.api</groupId>
+    <artifactId>nutrition</artifactId>
+    <version>01.00.00.00-SNAPSHOT</version>
+  </parent>
+    
+  <dependencies>
+    <!-- West Enterprise Common Dependencies -->
+    <dependency>
+      <groupId>com.wet.api</groupId>
+      <artifactId>common-dao</artifactId>
+    </dependency>
+
+    <!-- West Enterprise Nutrition Dependencies -->
+    <dependency>
+      <groupId>com.wet.api</groupId>
+      <artifactId>nutrition-model</artifactId>
+    </dependency>
+
+    <!-- Commons Dependencies -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-dbcp2</artifactId>
+    </dependency>
+
+    <!-- Spring Dependencies -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+    </dependency>
+
+    <!-- Testing -->
+    <dependency>
+      <groupId>org.dbunit</groupId>
+      <artifactId>dbunit</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-junit</artifactId>
+    </dependency>
+  </dependencies>
+
+</project>
