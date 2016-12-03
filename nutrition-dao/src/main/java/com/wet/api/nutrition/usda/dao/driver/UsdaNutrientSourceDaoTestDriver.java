@@ -10,8 +10,8 @@ import com.wet.api.nutrition.model.Nutrient;
 import com.wet.api.nutrition.model.NutrientGroup;
 import com.wet.api.nutrition.model.Source;
 import com.wet.api.nutrition.model.UnitOfMeasurement;
+import com.wet.api.nutrition.model.usda.UsdaNutrientSource;
 import com.wet.api.nutrition.usda.dao.UsdaNutrientSourceDao;
-import com.wet.api.nutrition.usda.model.UsdaNutrientSource;
 
 public class UsdaNutrientSourceDaoTestDriver
 {	

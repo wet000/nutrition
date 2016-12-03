@@ -13,7 +13,7 @@
 		<class>com.wet.api.nutrition.model.Food</class>
 		<class>com.wet.api.nutrition.model.Nutrient</class>
 		<class>com.wet.api.nutrition.model.NutritionFact</class>
-		<class>com.wet.api.nutrition.usda.model.UsdaFoodSource</class>
-		<class>com.wet.api.nutrition.usda.model.UsdaNutrientSource</class>
+		<class>com.wet.api.nutrition.model.usda.UsdaFoodSource</class>
+		<class>com.wet.api.nutrition.model.usda.UsdaNutrientSource</class>
 	</persistence-unit> 
 </persistence> 
