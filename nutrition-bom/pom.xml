@@ -34,6 +34,11 @@
         <artifactId>nutrition-model</artifactId>
         <version>${nutrition.version}</version>
       </dependency>
+      <dependency>
+        <groupId>com.wet.api</groupId>
+        <artifactId>nutrition-rest</artifactId>
+        <version>${nutrition.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 

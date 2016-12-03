@@ -19,6 +19,7 @@
     <module>nutrition-dao</module>
   	<module>nutrition-model</module>
   	<module>nutrition-service</module>
+  	<module>nutrition-rest</module>
   </modules>
 
   <properties>
@@ -49,6 +50,12 @@
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-entitymanager</artifactId>
+    </dependency>
+
+    <!-- Jackson JSON Mapper Dependencies -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
     </dependency>
 
     <!-- Other Dependencies -->
