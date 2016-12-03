@@ -8,8 +8,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.wet.api.nutrition.model.Food;
 import com.wet.api.nutrition.model.FoodGroup;
 import com.wet.api.nutrition.model.Source;
+import com.wet.api.nutrition.model.usda.UsdaFoodSource;
 import com.wet.api.nutrition.usda.dao.UsdaFoodSourceDao;
-import com.wet.api.nutrition.usda.model.UsdaFoodSource;
 
 public class UsdaFoodSourceDaoTestDriver
 {	

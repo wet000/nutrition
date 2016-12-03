@@ -1,9 +1,9 @@
-package com.wet.api.nutrition.usda.model;
+package com.wet.api.nutrition.model.usda;
 
 import javax.persistence.*;
 
 import com.wet.api.common.model.DomainEntity;
-import com.wet.api.nutrition.model.Nutrient;
+import com.wet.api.nutrition.model.Food;
 import com.wet.api.nutrition.model.Source;
 
 import java.text.SimpleDateFormat;
@@ -11,26 +11,26 @@ import java.util.Date;
 
 
 /**
- * The persistent class for the usda_nutrient_source database table.
+ * The persistent class for the usda_food_source database table.
  * 
  */
 @Entity
-@Table(name="usda_nutrient_source")
-@NamedQuery(name="UsdaNutrientSource.findAll", query="SELECT u FROM UsdaNutrientSource u")
-public class UsdaNutrientSource implements DomainEntity 
+@Table(name="usda_food_source")
+@NamedQuery(name="UsdaFoodSource.findAll", query="SELECT u FROM UsdaFoodSource u")
+public class UsdaFoodSource implements DomainEntity 
 {
-	private static final long serialVersionUID = 1677846068745563524L;
+	private static final long serialVersionUID = 1617258391248664916L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
-	@Column(name="usda_nutrient_id")
-	private int usdaNutrientId;
+	@Column(name="usda_food_id")
+	private int usdaFoodId;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="nutrient_id")
-	private Nutrient nutrient;
+	@JoinColumn(name="food_id")
+	private Food food;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="source_id")
@@ -44,7 +44,6 @@ public class UsdaNutrientSource implements DomainEntity
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="version")
 	private Date version;
-	
 
 	@Override
 	public long getId() 
@@ -57,34 +56,33 @@ public class UsdaNutrientSource implements DomainEntity
 	{
 		this.id = id;
 	}
-
-	public int getUsdaNutrientId() 
+	
+	public int getUsdaFoodId() 
 	{
-		return this.usdaNutrientId;
+		return this.usdaFoodId;
 	}
 
-	public void setUsdaNutrientId(int usdaNutrientId) 
+	public void setUsdaFoodId(int usdaFoodId) 
 	{
-		this.usdaNutrientId = usdaNutrientId;
+		this.usdaFoodId = usdaFoodId;
 	}
 
-	public Nutrient getNutrient()
+	public Food getFood() 
 	{
-		return this.nutrient;
+		return this.food;
 	}
 
-	public void setNutrient(Nutrient nutrient)
+	public void setFood(Food food) 
 	{
-		this.nutrient = nutrient;
+		this.food = food;
 	}
 
-	public Source getSource()
+	public Source getSource() 
 	{
 		return this.source;
 	}
 
-	public void setSource(Source source)
-	{
+	public void setSource(Source source) {
 		this.source = source;
 	}
 	
@@ -92,28 +90,28 @@ public class UsdaNutrientSource implements DomainEntity
 	{
 		return this.createDate;
 	}
-
-	public void setCreateDate(Date createDate)
+	
+	public void setCreateDate(Date createDate) 
 	{
 		this.createDate = createDate;
 	}
-	
+
 	@Override
-	public Date getVersion()
+	public Date getVersion() 
 	{
 		return this.version;
 	}
 
 	@Override
-	public void setVersion(Date version)
+	public void setVersion(Date version) 
 	{
 		this.version = version;
 	}
 	
 	/**
-	 * Returns a string representation of a {@UsdaNutrientSource}.
+	 * Returns a string representation of a {@UsdaFoodSource}.
 	 * 
-	 * @Return		the string representation of a {@UsdaNutrientSource}
+	 * @Return		the string representation of a {@UsdaFoodSource}
 	 */
 	@Override
 	public String toString()
@@ -122,8 +120,8 @@ public class UsdaNutrientSource implements DomainEntity
 		StringBuilder sb = new StringBuilder("[");
 		
 		sb.append(this.id).append("=");
-		sb.append("USDA Nutrient Id:").append(this.usdaNutrientId).append(", ");
-		sb.append("Nutrient:").append(this.nutrient).append(", ");
+		sb.append("USDA Food Id:").append(this.usdaFoodId).append(", ");
+		sb.append("Food:").append(this.food).append(", ");
 		sb.append("Source:").append(this.source).append(", ");
 		
 		// Last Modified
@@ -141,10 +139,10 @@ public class UsdaNutrientSource implements DomainEntity
 	}
 	
 	/**
-	 * Equals method for {@UsdaNutrientSource}
+	 * Equals method for {@UsdaFoodSource}
 	 * 
-	 * {@UsdaNutrientSource}s are considered equal if the USDA Nutrient Ids, 
-	 * nutrients, and sources equal
+	 * {@UsdaFoodSource}s are considered equal if the USDA Food Ids, 
+	 * foods, and sources equal
 	 * 
 	 * @param	o	the term object passed in to determine its equality with this object
 	 * @return		true if this term is equal to the term passed in
@@ -152,15 +150,15 @@ public class UsdaNutrientSource implements DomainEntity
 	@Override
 	public boolean equals(Object o)
 	{
-		if (!(o instanceof UsdaNutrientSource) || o == null)
+		if (!(o instanceof UsdaFoodSource) || o == null)
 		{
 			return false;
 		}
 		
-		UsdaNutrientSource usdaNutrientSource = (UsdaNutrientSource)o;
-		if (this.usdaNutrientId == usdaNutrientSource.getUsdaNutrientId() &&
-			this.nutrient.equals(usdaNutrientSource.getNutrient()) &&
-			this.source.equals(usdaNutrientSource.getSource()))
+		UsdaFoodSource usdaFoodSource = (UsdaFoodSource)o;
+		if (this.usdaFoodId == usdaFoodSource.getUsdaFoodId() &&
+			this.food.equals(usdaFoodSource.getFood()) &&
+			this.source.equals(usdaFoodSource.getSource()))
 		{
 			return true;
 		}
@@ -169,10 +167,10 @@ public class UsdaNutrientSource implements DomainEntity
 	}
 	
 	/**
-	 * Hashcode method for {@UsdaNutrientSource}
+	 * Hashcode method for {@UsdaFoodSource}
 	 * 
-	 * The hashcode representation for {@UsdaNutrientSource}. The USDA Nutrient Id,
-	 * nutrient, and source are used to determine the hashcode value.
+	 * The hashcode representation for {@UsdaFoodSource}. The USDA Food Id,
+	 * food, and source are used to determine the hashcode value.
 	 * 
 	 * @return		the hashcode value
 	 */
@@ -181,8 +179,8 @@ public class UsdaNutrientSource implements DomainEntity
 	{
 		int hashCode = 31;
 		
-		hashCode += this.usdaNutrientId == 0 ? 0 : this.usdaNutrientId;
-		hashCode += this.nutrient == null ? 0 : this.nutrient.hashCode();
+		hashCode += this.usdaFoodId == 0 ? 0 : this.usdaFoodId;
+		hashCode += this.food == null ? 0 : this.food.hashCode();
 		hashCode += this.source == null ? 0 : this.source.hashCode();
 		
 		return hashCode;
