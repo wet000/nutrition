@@ -1,4 +1,4 @@
-package com.wet.api.nutriton.rest.impl;
+package com.wet.api.nutrition.rest.impl;
 
 import org.springframework.stereotype.Service;
 
@@ -20,27 +20,29 @@ public class UsdaFoodCompositionRestClientImpl extends AbstractSpringRestClient<
 	private static final String FORMAT_JSON = "json";
 	private static final String API_KEY = "IzzZrz6wEbEmXUhk4vOohBmTYhgQebIQYlMR7W5v";
 	
-	private String baseUri = "http://api.nal.usda.gov/ndb/";
+	private static final String BASE_URI = "http://api.nal.usda.gov/ndb/";
 	
-	public UsdaFoodCompositionRestClientImpl() 
-	{
-		super(UsdaReportWrapper.class);
-	}
-
 	@Override
-	public String getBaseUri() 
-	{
-		return baseUri;
-	}
-
-	@Override
-	public UsdaReport getUsdaFoodReport(String usdaFoodId)
+	public UsdaReport getUsdaFoodReport(String usdaFoodId) 
 	{
 		setMethod(METHOD_REPORTS);
 		putParam(PARAM_USDA_FOOD_ID, usdaFoodId);
 		putParam(PARAM_REPORT_TYPE, REPORT_TYPE_FULL);
 		putParam(PARAM_FORMAT, FORMAT_JSON);
 		putParam(PARAM_API_KEY, API_KEY);
+		
 		return get().getReport();
+	}
+
+	@Override
+	protected void setType() 
+	{
+		this.type = UsdaReportWrapper.class;
+	}
+
+	@Override
+	protected void setBaseUri() 
+	{
+		this.baseUri = BASE_URI;
 	}
 }
