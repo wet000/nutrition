@@ -13,7 +13,7 @@
     <groupId>com.wet.api</groupId>
     <artifactId>common-bom</artifactId>
     <version>01.00.00.00-SNAPSHOT</version>
-		<relativePath>../common/common-bom/</relativePath>
+		<relativePath>../../common/common-bom/</relativePath>
   </parent>
 
   <properties>
