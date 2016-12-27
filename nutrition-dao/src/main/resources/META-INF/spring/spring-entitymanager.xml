@@ -9,7 +9,7 @@
  							http://www.springframework.org/schema/tx/spring-tx.xsd">
  							
 	<import resource="spring-datasource.xml"/>
-	
+
 	<bean id="nutritionEntityManagerFactory" name="nutritionEntityManagerFactory"
 		  class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="persistenceXmlLocation" value="classpath:META-INF/spring/persistence.xml" />
@@ -20,18 +20,18 @@
 		</property>
 		<property name="jpaPropertyMap">
 			<map>
-				<entry key="hibernate.dialect" value="${hibernate.dialect}" />
-				<entry key="hibernate.show_sql" value="${hibernate.show_sql}" />
-				<entry key="hibernate.format_sql" value="${hibernate.format_sql}" />
-				<entry key="hibernate.ejb.naming_strategy" value="${hibernate.ejb.naming_strategy}" />
+				<entry key="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+				<entry key="hibernate.show_sql" value="true" />
+				<entry key="hibernate.format_sql" value="true" />
+				<entry key="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy" />
 			</map>
 		</property>
 	</bean>
- 
+
 	<bean id="nutritionTransactionManager"
 		  class="org.springframework.orm.jpa.JpaTransactionManager"
-		  p:entityManagerFactory-ref="nutritionEntityManagerFactory"/> 
-		   
+		  p:entityManagerFactory-ref="nutritionEntityManagerFactory"/>
+
 	<tx:annotation-driven transaction-manager="nutritionTransactionManager"/>
 
 </beans>

@@ -5,7 +5,7 @@
     	xsi:schemaLocation="http://www.springframework.org/schema/beans
     						http://www.springframework.org/schema/beans/spring-beans.xsd">
  							
-	<bean id="h2DataSource"
+	<bean id="nutritionDataSource"
 		  class="org.apache.commons.dbcp2.BasicDataSource"
 		  p:driverClassName="${datasource.driver.ClassName}"
 		  p:url="${datasource.url}"
