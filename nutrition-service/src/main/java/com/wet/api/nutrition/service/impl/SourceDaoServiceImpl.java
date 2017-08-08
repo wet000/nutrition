@@ -20,4 +20,10 @@ public class SourceDaoServiceImpl extends AbstractCommonDaoService<Source> imple
 	{
 		return sourceDao;
 	}
+
+    @Override
+    public Source findBySource(String source)
+    {
+        return sourceDao.findBySource(source);
+    }
 }

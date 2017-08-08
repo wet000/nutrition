@@ -10,7 +10,7 @@ public class UsdaMeasure
 	private double grams;
 	
 	@JsonProperty("qty")
-	private short quantity;
+	private double quantity;
 	
 	private double value;
 	
@@ -34,12 +34,12 @@ public class UsdaMeasure
 		this.grams = grams;
 	}
 	
-	public short getQuantity()
+	public double getQuantity()
 	{
 		return quantity;
 	}
 	
-	public void setQuantity(short quantity)
+	public void setQuantity(double quantity)
 	{
 		this.quantity = quantity;
 	}

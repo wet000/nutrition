@@ -28,11 +28,11 @@ public class UsdaFoodSource implements DomainEntity
 	@Column(name="usda_food_id")
 	private int usdaFoodId;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="food_id")
 	private Food food;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="source_id")
 	private Source source;
 

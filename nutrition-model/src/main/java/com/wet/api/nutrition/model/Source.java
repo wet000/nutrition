@@ -18,9 +18,11 @@ import java.util.Date;
 public class Source implements DomainEntity 
 {
 	private static final long serialVersionUID = 2358175886226306093L;
+	
+	public static final String USDA_FOOD_COMPOSITION = "USDA Food Composition Database";
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
 	@Column(name="source")
