@@ -5,4 +5,5 @@ import com.wet.api.nutrition.model.Food;
 
 public interface FoodDao extends Dao<Food>
 {
+    public Food findByName(String name);
 }

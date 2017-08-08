@@ -20,7 +20,7 @@ public class FoodGroup implements DomainEntity
 	private static final long serialVersionUID = -4023664415962308245L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 
 	@Column(name="name")

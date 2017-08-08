@@ -1,45 +1,38 @@
 package com.wet.api.nutrition.model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Version;
+import javax.persistence.*;
 
 import com.wet.api.common.model.DomainEntity;
 
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
- * The persistent class for the food database table.
+ * The persistent class for the nutrient_measure database table.
  * 
  */
 @Entity
-@Table(name = "food")
-@NamedQuery(name = "Food.findAll", query = "SELECT f FROM Food f")
-public class Food implements DomainEntity
+@Table(name = "nutrient_measure")
+@NamedQuery(name = "NutrientMeasure.findAll", query = "SELECT n FROM NutrientMeasure n")
+public class NutrientMeasure implements DomainEntity
 {
-    private static final long serialVersionUID = -1588670954435478452L;
+    private static final long serialVersionUID = 8244069926989219013L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "name")
-    private String name;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "food_id")
+    private Food food;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "food_group_id")
-    private FoodGroup foodGroup;
+    @JoinColumn(name = "nutrient_id")
+    private Nutrient nutrient;
+
+    @Column(name = "amount_per_gram")
+    private BigDecimal amountPerGram;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date", columnDefinition = "DATETIME", nullable = false)
@@ -62,24 +55,34 @@ public class Food implements DomainEntity
         this.id = id;
     }
 
-    public String getName()
+    public Food getFood()
     {
-        return this.name;
+        return this.food;
     }
 
-    public void setName(String name)
+    public void setFood(Food food)
     {
-        this.name = name;
+        this.food = food;
     }
 
-    public FoodGroup getFoodGroup()
+    public Nutrient getNutrient()
     {
-        return this.foodGroup;
+        return this.nutrient;
     }
 
-    public void setFoodGroup(FoodGroup foodGroup)
+    public void setNutrient(Nutrient nutrient)
     {
-        this.foodGroup = foodGroup;
+        this.nutrient = nutrient;
+    }
+
+    public BigDecimal getAmountPerGram()
+    {
+        return this.amountPerGram;
+    }
+
+    public void setAmountPerGram(BigDecimal amountPerGram)
+    {
+        this.amountPerGram = amountPerGram;
     }
 
     public Date getCreateDate()
@@ -105,9 +108,9 @@ public class Food implements DomainEntity
     }
 
     /**
-     * Returns a string representation of a {@Food}.
+     * Returns a string representation of a {@NutrientMeasure}.
      * 
-     * @Return the string representation of a {@Food}
+     * @Return the string representation of a {@NutrientMeasure}
      */
     @Override
     public String toString()
@@ -116,8 +119,9 @@ public class Food implements DomainEntity
         StringBuilder sb = new StringBuilder("[");
 
         sb.append(this.id).append("=");
-        sb.append("Name:").append(this.name).append(", ");
-        sb.append("Food Group:").append(this.foodGroup).append(", ");
+        sb.append("Food:").append(this.food).append(", ");
+        sb.append("Nutrient:").append(this.nutrient).append(", ");
+        sb.append("Amount Per Gram:").append(this.amountPerGram).append(", ");
         sb.append("Created:").append(formatter.format(this.createDate)).append(", ");
 
         // Last Modified
@@ -135,9 +139,10 @@ public class Food implements DomainEntity
     }
 
     /**
-     * Equals method for {@Food}
+     * Equals method for {@NutrientMeasure}
      * 
-     * {@Food}s are considered equal if the names and food groups are equal
+     * {@NutrientMeasure}s are considered equal if the food and nutrient are
+     * equal
      * 
      * @param o The term object passed in to determine its equality with this
      *            object
@@ -146,13 +151,13 @@ public class Food implements DomainEntity
     @Override
     public boolean equals(Object o)
     {
-        if (!(o instanceof Food) || o == null)
+        if (!(o instanceof NutrientMeasure) || o == null)
         {
             return false;
         }
 
-        Food food = (Food) o;
-        if (this.name.equals(food.getName()) && this.foodGroup.equals(food.getFoodGroup()))
+        NutrientMeasure nutrientMeasure = (NutrientMeasure) o;
+        if (this.food.equals(nutrientMeasure.getFood()) && this.nutrient.equals(nutrientMeasure.getNutrient()))
         {
             return true;
         }
@@ -161,10 +166,10 @@ public class Food implements DomainEntity
     }
 
     /**
-     * Hashcode method for {@Food}
+     * Hashcode method for {@NutrientMeasure}
      * 
-     * The hashcode representation for {@Food}. The name and food group are used
-     * to determine the hashcode value.
+     * The hashcode representation for {@NutrientMeasure}. The food and nutrient
+     * are used to determine the hashcode value.
      * 
      * @return the hashcode value
      */
@@ -173,8 +178,8 @@ public class Food implements DomainEntity
     {
         int hashCode = 31;
 
-        hashCode += this.name == null ? 0 : this.name.hashCode();
-        hashCode += this.foodGroup == null ? 0 : this.foodGroup.hashCode();
+        hashCode += this.food == null ? 0 : this.food.hashCode();
+        hashCode += this.nutrient == null ? 0 : this.nutrient.hashCode();
 
         return hashCode;
     }

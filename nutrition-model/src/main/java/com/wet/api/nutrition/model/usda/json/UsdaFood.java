@@ -47,6 +47,7 @@ public class UsdaFood
 	@JsonProperty("ds")
 	private String databaseSource;
 	
+	@JsonProperty("nutrients")
 	private Collection<UsdaNutrient> usdaNutrients;
 
 	

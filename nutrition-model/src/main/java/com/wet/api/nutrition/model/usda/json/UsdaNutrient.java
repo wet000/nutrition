@@ -2,6 +2,7 @@ package com.wet.api.nutrition.model.usda.json;
 
 import java.util.Collection;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UsdaNutrient 
@@ -17,6 +18,7 @@ public class UsdaNutrient
 	
 	private double value;
 	
+	@JsonIgnore
 	private String sourcecode;
 	
 	@JsonProperty("dp")

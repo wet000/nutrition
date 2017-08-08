@@ -5,4 +5,5 @@ import com.wet.api.nutrition.model.Source;
 
 public interface SourceDao extends Dao<Source>
 {
+    public Source findBySource(String source);
 }

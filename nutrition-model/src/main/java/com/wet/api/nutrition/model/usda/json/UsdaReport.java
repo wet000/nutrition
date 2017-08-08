@@ -84,4 +84,14 @@ public class UsdaReport extends AbstractDomainObject
 	{
 		this.usdaLanguals = usdaLanguals;
 	}
+	
+	@Override
+	public String toString()
+	{
+		StringBuilder sb = new StringBuilder();
+		sb.append("[Nutrition Database Number: ").append(this.usdaFood.getNutritionDbNumber()).append("=");
+		sb.append(this.usdaFood.getName()).append("]");
+		
+		return sb.toString();
+	}
 }

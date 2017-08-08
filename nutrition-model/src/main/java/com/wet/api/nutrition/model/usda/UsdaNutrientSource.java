@@ -28,11 +28,11 @@ public class UsdaNutrientSource implements DomainEntity
 	@Column(name="usda_nutrient_id")
 	private int usdaNutrientId;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="nutrient_id")
 	private Nutrient nutrient;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="source_id")
 	private Source source;
 
@@ -44,7 +44,6 @@ public class UsdaNutrientSource implements DomainEntity
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="version")
 	private Date version;
-	
 
 	@Override
 	public long getId() 

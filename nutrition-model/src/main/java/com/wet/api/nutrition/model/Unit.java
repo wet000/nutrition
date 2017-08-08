@@ -1,34 +1,22 @@
 package com.wet.api.nutrition.model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Version;
+import javax.persistence.*;
 
 import com.wet.api.common.model.DomainEntity;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
- * The persistent class for the food database table.
+ * The persistent class for the unit database table.
  * 
  */
 @Entity
-@Table(name = "food")
-@NamedQuery(name = "Food.findAll", query = "SELECT f FROM Food f")
-public class Food implements DomainEntity
+@Table(name = "unit")
+@NamedQuery(name = "Unit.findAll", query = "SELECT u FROM Unit u")
+public class Unit implements DomainEntity
 {
-    private static final long serialVersionUID = -1588670954435478452L;
+    private static final long serialVersionUID = -3442465150579806047L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,23 +25,22 @@ public class Food implements DomainEntity
     @Column(name = "name")
     private String name;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "food_group_id")
-    private FoodGroup foodGroup;
+    @Column(name = "abbreviation")
+    private String abbreviation;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "create_date", columnDefinition = "DATETIME", nullable = false)
+    @Column(name = "create_date")
     private Date createDate;
 
     @Version
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "version", columnDefinition = "DATETIME", nullable = false)
+    @Column(name = "version")
     private Date version;
 
     @Override
     public long getId()
     {
-        return id;
+        return this.id;
     }
 
     @Override
@@ -72,14 +59,14 @@ public class Food implements DomainEntity
         this.name = name;
     }
 
-    public FoodGroup getFoodGroup()
+    public String getAbbreviation()
     {
-        return this.foodGroup;
+        return this.abbreviation;
     }
 
-    public void setFoodGroup(FoodGroup foodGroup)
+    public void setAbbreviation(String abbreviation)
     {
-        this.foodGroup = foodGroup;
+        this.abbreviation = abbreviation;
     }
 
     public Date getCreateDate()
@@ -105,9 +92,9 @@ public class Food implements DomainEntity
     }
 
     /**
-     * Returns a string representation of a {@Food}.
+     * Returns a string representation of a {@Unit}.
      * 
-     * @Return the string representation of a {@Food}
+     * @Return the string representation of a {@Unit}
      */
     @Override
     public String toString()
@@ -117,7 +104,7 @@ public class Food implements DomainEntity
 
         sb.append(this.id).append("=");
         sb.append("Name:").append(this.name).append(", ");
-        sb.append("Food Group:").append(this.foodGroup).append(", ");
+        sb.append("Abbreviation:").append(this.abbreviation).append(", ");
         sb.append("Created:").append(formatter.format(this.createDate)).append(", ");
 
         // Last Modified
@@ -135,24 +122,25 @@ public class Food implements DomainEntity
     }
 
     /**
-     * Equals method for {@Food}
+     * Equals method for {@Unit}
      * 
-     * {@Food}s are considered equal if the names and food groups are equal
+     * {@Unit}s are considered equal if the names and abbreviations are equal
      * 
-     * @param o The term object passed in to determine its equality with this
+     * @param o the term object passed in to determine its equality with this
      *            object
      * @return true if this term is equal to the term passed in
      */
     @Override
     public boolean equals(Object o)
     {
-        if (!(o instanceof Food) || o == null)
+        if (!(o instanceof Unit) || o == null)
         {
             return false;
         }
 
-        Food food = (Food) o;
-        if (this.name.equals(food.getName()) && this.foodGroup.equals(food.getFoodGroup()))
+        Unit unit = (Unit) o;
+        if (this.name.equals(unit.getName()) &&
+                this.abbreviation.equals(unit.getAbbreviation()))
         {
             return true;
         }
@@ -161,10 +149,10 @@ public class Food implements DomainEntity
     }
 
     /**
-     * Hashcode method for {@Food}
+     * Hashcode method for {@Unit}
      * 
-     * The hashcode representation for {@Food}. The name and food group are used
-     * to determine the hashcode value.
+     * The hashcode representation for {@Unit}. The name and abbreviation are
+     * used to determine the hashcode value.
      * 
      * @return the hashcode value
      */
@@ -174,7 +162,7 @@ public class Food implements DomainEntity
         int hashCode = 31;
 
         hashCode += this.name == null ? 0 : this.name.hashCode();
-        hashCode += this.foodGroup == null ? 0 : this.foodGroup.hashCode();
+        hashCode += this.abbreviation == null ? 0 : this.abbreviation.hashCode();
 
         return hashCode;
     }
