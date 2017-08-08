@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans	xmlns="http://www.springframework.org/schema/beans"
-    	xmlns:context="http://www.springframework.org/schema/context"
-    	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    	xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
     						http://www.springframework.org/schema/beans/spring-beans.xsd
  							http://www.springframework.org/schema/context
  							http://www.springframework.org/schema/context/spring-context.xsd">
- 
-	<import resource="classpath:META-INF/spring/spring-entitymanager.xml" />
-	
-	<!-- Externalize some settings to a properties file outside the Spring configuration --> 
- 	<context:property-placeholder location="classpath*:META-INF/spring/*.properties"/>
- 	
- 	<!-- Scan packages to find and register beans -->
-    <context:component-scan base-package="com.wet.api" />
-    
-   	<!-- Avoid instantiating @Controller classes, as these should be instantiated by a web tier application context -->
-   	<!-- <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/> -->
-   	
-   	<!-- Post-processor to perform exception translation on @Repository classes (from native 
-   		 exceptions such as JPA PersistenceExceptions to Spring's DataAccessException hierarchy). -->
-    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
- 
+
+  <import resource="classpath:META-INF/spring/spring-entitymanager.xml" />
+
+  <!-- Externalize some settings to a properties file outside the Spring configuration -->
+  <context:property-placeholder location="classpath*:META-INF/spring/*.properties" />
+
+  <!-- Scan packages to find and register beans -->
+  <context:component-scan base-package="com.wet.api" />
+
+  <!-- Avoid instantiating @Controller classes, as these should be instantiated by a web tier application context -->
+  <!-- <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/> -->
+
+  <!-- Post-processor to perform exception translation on @Repository classes (from native exceptions such as JPA PersistenceExceptions 
+    to Spring's DataAccessException hierarchy). -->
+  <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
 </beans>

@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS nutrient_group (
   version timestamp
 );
 
-CREATE TABLE IF NOT EXISTS unit_of_measurement (
+CREATE TABLE IF NOT EXISTS unit (
   id smallint IDENTITY PRIMARY KEY,
   name varchar,
   abbreviation varchar,
@@ -40,22 +40,31 @@ CREATE TABLE IF NOT EXISTS nutrient (
   id int IDENTITY PRIMARY KEY,
   name VARCHAR,
   nutrient_group_id smallint,
-  unit_of_measurement_id smallint,
+  unit_id smallint,
   recommended_dietary_allowance decimal(6,2),
   overdose_limit decimal(6,2),
   create_date timestamp,
   version timestamp,
   FOREIGN KEY (nutrient_group_id) REFERENCES public.nutrient_group(id),
-  FOREIGN KEY (unit_of_measurement_id) REFERENCES public.unit_of_measurement(id)
+  FOREIGN KEY (unit_id) REFERENCES public.unit(id)
 );
 
-CREATE TABLE IF NOT EXISTS nutrition_fact (
+CREATE TABLE IF NOT EXISTS food_measure (
+  id int IDENTITY PRIMARY KEY,
+  food_id int,
+  size varchar,
+  quantity decimal(6,2),
+  grams decimal(6,2),
+  create_date timestamp,
+  version timestamp,
+  FOREIGN KEY (food_id) REFERENCES public.food(id)
+);
+
+CREATE TABLE IF NOT EXISTS nutrient_measure (
   id int IDENTITY PRIMARY KEY,
   food_id int,
   nutrient_id int,
-  label varchar,
-  serving_size smallint,
-  amount_per_serving decimal(6,2),
+  amount_per_gram decimal(12,6),
   create_date timestamp,
   version timestamp,
   FOREIGN KEY (food_id) REFERENCES public.food(id),
