@@ -4,5 +4,5 @@ import com.wet.api.nutrition.model.usda.json.UsdaReport;
 
 public interface UsdaFoodCompositionRestClient<UsdaReportWrapper>
 {
-	public UsdaReport getUsdaFoodReport(String usdaFoodId);
+    public UsdaReport getUsdaFoodReport(String usdaFoodId);
 }

@@ -1,17 +1,5 @@
 <dataset>
-  <source
-  	id="1"  
-  	source="Test Source 1"  
-  	create_date="2010-03-12 08:21:13" 
-  	version="2014-07-23 04:59:59"/>
-  <source
-  	id="2"  
-  	source="Test Source 2"  
-  	create_date="2010-03-12 08:21:13" 
-  	version="2014-07-23 04:59:59"/>
-  <source
-  	id="3"  
-  	source="Test Source 2"  
-  	create_date="2010-03-12 08:21:13" 
-  	version="2014-07-23 04:59:59"/>
+  <source id="1" source="Test Source 1" create_date="2010-03-12 08:21:13" version="2014-07-23 04:59:59" />
+  <source id="2" source="Test Source 2" create_date="2010-03-12 08:21:13" version="2014-07-23 04:59:59" />
+  <source id="3" source="Test Source 2" create_date="2010-03-12 08:21:13" version="2014-07-23 04:59:59" />
 </dataset>

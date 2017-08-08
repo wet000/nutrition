@@ -15,11 +15,11 @@
   </parent>
 
   <modules>
-  	<module>nutrition-bom</module>
+    <module>nutrition-bom</module>
     <module>nutrition-dao</module>
-  	<module>nutrition-model</module>
-  	<module>nutrition-service</module>
-  	<module>nutrition-rest</module>
+    <module>nutrition-model</module>
+    <module>nutrition-service</module>
+    <module>nutrition-rest</module>
   </modules>
 
   <properties>
@@ -41,10 +41,7 @@
 
   <dependencies>
     <!-- Commons Dependencies -->
-    <!--<dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
-    </dependency>-->
+    <!--<dependency> <groupId>org.apache.commons</groupId> <artifactId>commons-lang3</artifactId> </dependency> -->
 
     <!-- Hibernate Dependencies -->
     <dependency>
@@ -59,28 +56,16 @@
     </dependency>
 
     <!-- Other Dependencies -->
-    <!--<dependency>
-      <groupId>javax.el</groupId>
-      <artifactId>javax.el-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>javax.inject</groupId>
-      <artifactId>javax.inject</artifactId>
-    </dependency>-->
+    <!--<dependency> <groupId>javax.el</groupId> <artifactId>javax.el-api</artifactId> </dependency> <dependency> <groupId>javax.inject</groupId> 
+      <artifactId>javax.inject</artifactId> </dependency> -->
     <dependency>
       <groupId>joda-time</groupId>
       <artifactId>joda-time</artifactId>
     </dependency>
 
     <!-- Testing -->
-    <!--<dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-core</artifactId>
-    </dependency>-->
+    <!--<dependency> <groupId>junit</groupId> <artifactId>junit</artifactId> </dependency> <dependency> <groupId>org.mockito</groupId> 
+      <artifactId>mockito-core</artifactId> </dependency> -->
   </dependencies>
-  
+
 </project>
